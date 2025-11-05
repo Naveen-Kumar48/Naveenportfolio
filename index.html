@@ -21,6 +21,9 @@
       <li><a href="#">Service</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <i class='bx bx-moon'></i>
+    </button>
   </nav>
 
  
@@ -74,6 +77,38 @@
       </div>
     </div>
   </section>
+  <script>
+    (function () {
+      var storageKey = 'theme';
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.body.classList.add('light-theme');
+        } else {
+          document.body.classList.remove('light-theme');
+        }
+      }
+      var saved = localStorage.getItem(storageKey) || 'dark';
+      applyTheme(saved);
+      var btn = document.querySelector('.theme-toggle');
+      if (!btn) return;
+      var icon = btn.querySelector('i');
+      function updateIcon() {
+        if (document.body.classList.contains('light-theme')) {
+          icon.classList.remove('bx-moon');
+          icon.classList.add('bx-sun');
+        } else {
+          icon.classList.add('bx-moon');
+          icon.classList.remove('bx-sun');
+        }
+      }
+      updateIcon();
+      btn.addEventListener('click', function () {
+        var isLight = document.body.classList.toggle('light-theme');
+        localStorage.setItem(storageKey, isLight ? 'light' : 'dark');
+        updateIcon();
+      });
+    })();
+  </script>
 </body>
 
 </html>
