@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+/* Base dark background for default theme */
+body {
+  background: #1f242d;
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -72,6 +77,27 @@ a {
   transition: 0.3s;
 }
 .theme-toggle:hover {
+  background: #7cf03d;
+  color: #1f242d;
+  box-shadow: 0 0 10px #7cf03d;
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  padding: 8px;
+  border: 2px solid #7cf03d;
+  border-radius: 8px;
+  background: transparent;
+  color: #7cf03d;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.nav-toggle:hover {
   background: #7cf03d;
   color: #1f242d;
   box-shadow: 0 0 10px #7cf03d;
@@ -271,6 +297,25 @@ a {
     text-align: center;
     gap: 24px;
     padding: 80px 7% 0;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .navbar ul {
+    display: none;
+  }
+  .navbar.open ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 5%;
+    top: calc(100% + 10px);
+    background: rgba(31, 36, 45, 0.98);
+    padding: 12px;
+    border: 1px solid #7cf03d;
+    border-radius: 12px;
+    gap: 8px;
+    z-index: 101;
   }
   .home-info {
     margin-bottom: 30px;
