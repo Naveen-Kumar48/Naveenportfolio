@@ -21,6 +21,9 @@
       <li><a href="#">Service</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <i class='bx bx-menu'></i>
+    </button>
     <button class="theme-toggle" aria-label="Toggle theme">
       <i class='bx bx-moon'></i>
     </button>
@@ -106,6 +109,29 @@
         var isLight = document.body.classList.toggle('light-theme');
         localStorage.setItem(storageKey, isLight ? 'light' : 'dark');
         updateIcon();
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      var nav = document.querySelector('.navbar');
+      var toggle = document.querySelector('.nav-toggle');
+      if (!nav || !toggle) return;
+      toggle.addEventListener('click', function () {
+        nav.classList.toggle('open');
+      });
+      // Close menu when a link is clicked
+      nav.addEventListener('click', function (e) {
+        var target = e.target;
+        if (target.tagName === 'A') {
+          nav.classList.remove('open');
+        }
+      });
+      // Close on resize beyond mobile
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 768) {
+          nav.classList.remove('open');
+        }
       });
     })();
   </script>
